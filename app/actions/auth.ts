@@ -32,7 +32,7 @@ export async function login(formData: FormData) {
     .from('users')
     .select('role')
     .eq('id', data.user.id)
-    .single()
+    .single<{ role: string }>()
 
   revalidatePath('/', 'layout')
 

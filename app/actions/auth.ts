@@ -78,7 +78,7 @@ export async function getCurrentUser() {
     .from('users')
     .select('*')
     .eq('id', user.id)
-    .single()
+    .single<Record<string, any>>()
 
   // Si manager, récupérer aussi les infos property_manager
   let managerData = null
@@ -87,7 +87,7 @@ export async function getCurrentUser() {
       .from('property_managers')
       .select('*')
       .eq('user_id', user.id)
-      .single()
+      .single<Record<string, any>>()
     managerData = data
   }
 

@@ -37,14 +37,20 @@ export default function LoginPage() {
       }
 
       // Récupérer le rôle de l'utilisateur
-      const { data: userData } = await supabase
+      const { data: userData, error: userError } = await supabase
         .from('users')
         .select('role')
         .eq('id', data.user.id)
         .single()
 
+      if (userError || !userData) {
+        setError('Impossible de récupérer les informations utilisateur')
+        setIsLoading(false)
+        return
+      }
+
       // Rediriger selon le rôle
-      if (userData?.role === 'admin') {
+      if (userData.role === 'admin') {
         router.push('/admin/dashboard')
       } else {
         router.push('/manager/dashboard')

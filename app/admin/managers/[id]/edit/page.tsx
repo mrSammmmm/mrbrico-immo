@@ -58,7 +58,7 @@ export default function EditManagerPage() {
           user:users(email, full_name)
         `)
         .eq('id', managerId)
-        .single<Record<string, any>>()
+        .single<Manager>()
 
       if (error) throw error
 

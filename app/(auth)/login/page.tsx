@@ -41,7 +41,7 @@ export default function LoginPage() {
         .from('users')
         .select('role')
         .eq('id', data.user.id)
-        .single()
+        .single<{ role: string }>()
 
       if (userError || !userData) {
         setError('Impossible de récupérer les informations utilisateur')

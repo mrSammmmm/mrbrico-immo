@@ -1,0 +1,26 @@
+From 23dbc7fee3040d632f04437f59f0eb6a1471a316 Mon Sep 17 00:00:00 2001
+From: Sam <samuel@wedoovideo.com>
+Date: Sun, 1 Feb 2026 02:29:45 +0000
+Subject: [PATCH] Fix TypeScript error by adding explicit type to Supabase
+ query
+
+---
+ app/(auth)/login/page.tsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/(auth)/login/page.tsx b/app/(auth)/login/page.tsx
+index df5b007..2d15c4d 100644
+--- a/app/(auth)/login/page.tsx
++++ b/app/(auth)/login/page.tsx
+@@ -41,7 +41,7 @@ export default function LoginPage() {
+         .from('users')
+         .select('role')
+         .eq('id', data.user.id)
+-        .single()
++        .single<{ role: string }>()
+ 
+       if (userError || !userData) {
+         setError('Impossible de récupérer les informations utilisateur')
+-- 
+2.34.1
+

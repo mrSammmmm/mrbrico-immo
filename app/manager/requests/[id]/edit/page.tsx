@@ -85,7 +85,7 @@ export default function EditRequestPage() {
           checklist_items (*)
         `)
         .eq('id', requestId)
-        .single()
+        .single<Record<string, any>>()
 
       if (error) throw error
       if (!data) throw new Error('Demande non trouvée')

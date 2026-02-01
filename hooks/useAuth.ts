@@ -49,7 +49,7 @@ export function useAuth() {
           .from('users')
           .select('*')
           .eq('id', authUser.id)
-          .single()
+          .single<Record<string, any>>()
 
         // Si manager, récupérer les infos property_manager
         let managerData = null
@@ -58,7 +58,7 @@ export function useAuth() {
             .from('property_managers')
             .select('*')
             .eq('user_id', authUser.id)
-            .single()
+            .single<Record<string, any>>()
           managerData = data
         }
 

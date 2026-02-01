@@ -42,7 +42,7 @@ export default function EditBuildingPage({ params }: PageProps) {
           .from('buildings')
           .select('*')
           .eq('id', id)
-          .single()
+          .single<Record<string, any>>()
 
         if (error) throw error
 

@@ -38,7 +38,7 @@ export default function ManagerDetailPage() {
             work_requests:work_requests(*, building:buildings(*))
           `)
           .eq('id', params.id)
-          .single()
+          .single<Record<string, any>>()
 
         if (error) throw error
         setManager(data)

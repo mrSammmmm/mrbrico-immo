@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       .from('users')
       .select('role')
       .eq('id', user.id)
-      .single()
+      .single<Record<string, any>>()
 
     if (userError || userData?.role !== 'admin') {
       return NextResponse.json(
@@ -104,7 +104,7 @@ export async function POST(request: Request) {
         notes: notes || null,
       })
       .select()
-      .single()
+      .single<Record<string, any>>()
 
     if (managerError) {
       console.log('[API] Erreur création manager:', managerError)
@@ -153,7 +153,7 @@ export async function PUT(request: Request) {
       .from('users')
       .select('role')
       .eq('id', user.id)
-      .single()
+      .single<Record<string, any>>()
 
     if (userError || userData?.role !== 'admin') {
       return NextResponse.json(
@@ -179,7 +179,7 @@ export async function PUT(request: Request) {
       .from('property_managers')
       .select('user_id')
       .eq('id', managerId)
-      .single()
+      .single<Record<string, any>>()
 
     if (fetchError || !manager) {
       return NextResponse.json(
@@ -212,7 +212,7 @@ export async function PUT(request: Request) {
       })
       .eq('id', managerId)
       .select()
-      .single()
+      .single<Record<string, any>>()
 
     if (updateManagerError) {
       return NextResponse.json(

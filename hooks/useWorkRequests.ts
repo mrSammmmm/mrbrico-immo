@@ -138,7 +138,7 @@ export function useWorkRequest(id: string | null) {
           property_manager:property_managers(*)
         `)
         .eq('id', id)
-        .single()
+        .single<Record<string, any>>()
 
       if (queryError) {
         throw queryError

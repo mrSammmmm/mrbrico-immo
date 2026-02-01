@@ -59,7 +59,7 @@ export async function updateSession(request: NextRequest) {
       .from('users')
       .select('role')
       .eq('id', user.id)
-      .single()
+      .single<Record<string, any>>()
 
     const url = request.nextUrl.clone()
     url.pathname = userData?.role === 'admin' ? '/admin/dashboard' : '/manager/dashboard'
@@ -72,7 +72,7 @@ export async function updateSession(request: NextRequest) {
       .from('users')
       .select('role')
       .eq('id', user.id)
-      .single()
+      .single<Record<string, any>>()
 
     if (userData?.role !== 'admin') {
       const url = request.nextUrl.clone()

@@ -108,7 +108,7 @@ export default function RequestDetailPage() {
             checklist_items (*)
           `)
           .eq('id', requestId)
-          .single()
+          .single<Record<string, any>>()
 
         if (error) throw error
         setRequest(data)
@@ -138,7 +138,7 @@ export default function RequestDetailPage() {
           message: newMessage.trim()
         })
         .select()
-        .single()
+        .single<Record<string, any>>()
 
       if (error) throw error
 

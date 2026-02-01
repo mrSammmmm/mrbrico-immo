@@ -75,7 +75,7 @@ export function Checklist({ workRequestId, mode, items: initialItems, onChange }
             work_request_id: workRequestId
           })
           .select()
-          .single()
+          .single<Record<string, any>>()
 
         if (error) throw error
         setItems([...items, data])

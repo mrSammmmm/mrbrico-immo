@@ -134,7 +134,7 @@ export function RequestForm({ onSuccess }: RequestFormProps) {
           status: 'nouveau',
         })
         .select()
-        .single()
+        .single<Record<string, any>>()
 
       if (insertError) throw insertError
 

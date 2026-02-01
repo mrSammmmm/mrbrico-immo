@@ -1,0 +1,38 @@
+# Vercel ignore file
+# Ces fichiers ne seront pas inclus dans le déploiement Vercel
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Tests
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+__tests__/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Environment (géré par Vercel)
+.env
+.env.local
+.env*.local
+
+# Node modules (installés par Vercel)
+node_modules/
+
+# Cache
+.next/
+.cache/

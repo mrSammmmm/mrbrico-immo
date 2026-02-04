@@ -45,3 +45,5 @@ supabase/.temp
 # Credentials (never commit!)
 docs/CREDENTIALS.md
 docs/TEST-CREDENTIALS.md
+push_to_github.sh
+MIGRATION_SUPABASE.md

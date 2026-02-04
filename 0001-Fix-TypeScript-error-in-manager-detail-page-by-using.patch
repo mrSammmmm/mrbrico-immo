@@ -1,0 +1,27 @@
+From 3d1fb862a09e593db6ec65554c4d1bf720b6e4ba Mon Sep 17 00:00:00 2001
+From: Sam <samuel@wedoovideo.com>
+Date: Sun, 1 Feb 2026 03:17:52 +0000
+Subject: [PATCH] Fix TypeScript error in manager detail page by using
+ ManagerWithDetails type
+
+Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+---
+ app/admin/managers/[id]/page.tsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/admin/managers/[id]/page.tsx b/app/admin/managers/[id]/page.tsx
+index 990b42f..bb29781 100644
+--- a/app/admin/managers/[id]/page.tsx
++++ b/app/admin/managers/[id]/page.tsx
+@@ -38,7 +38,7 @@ export default function ManagerDetailPage() {
+             work_requests:work_requests(*, building:buildings(*))
+           `)
+           .eq('id', params.id)
+-          .single<Record<string, any>>()
++          .single<ManagerWithDetails>()
+ 
+         if (error) throw error
+         setManager(data)
+-- 
+2.34.1
+
